@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define true 1
+#define false 0
+
 // struct called node containing an int identified as 'value', reference to another node identified as 'next'
 
 // reference through a value
@@ -25,22 +28,33 @@ int modifyAdder(int *x, int y)
 }
 
 // iterate through the linked list until you get to the end
+// once at end print out last value
+// once at the end add the new node to the list
 
 void addNode(int value, NODE *homeNode)
 {
-    NODE* trav = homeNode;
-    if (homeNode->next == NULL)
+    NODE *trav = homeNode;
+    // 1 = true in the cs50 library it adds
+    while(1)
     {
-        NODE *newNode = malloc(sizeof(NODE));
-        newNode->value = value;
-        //want to nullify whatever data is there.
-        //are we at the end of our list
-        newNode->next = NULL;
-        homeNode->next = newNode;
-    } else
-    {
-        printf("ERROR: next node not null!\n");
+        if (trav->next == NULL)
+        {
+            NODE *newNode = malloc(sizeof(NODE));
+            newNode->value = value;
+            //want to nullify whatever data is there.
+            //are we at the end of our list
+            newNode->next = NULL;
+            trav->next = newNode;
+            break;
+        }
+
+        else
+        {
+            trav = trav-> next;
+            printf("Moved Deeper\n");
+        }
     }
+
 
 }
 
@@ -64,6 +78,11 @@ int main (void)
     printf("%i\n", rootNode.next->value);
 
     addNode(8, &rootNode);
+    // printf("added next value\n");
+    addNode(17, &rootNode);
+    // addNode(20, &rootNode);
+
+    printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
 
     // NODE secondNode;
     // secondNode.value = 10;
