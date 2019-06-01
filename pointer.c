@@ -1,16 +1,17 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // struct called node containing an int identified as 'value', reference to another node identified as 'next'
 
 // reference through a value
 
-typedef struct
+typedef struct NODE
 {
+    // identifer
     int value;
-    NODE *next;
-} __attribute__((__packed__))
-NODE;
+    struct NODE *next;
+} NODE;
 
 
 int add(int x, int y)
@@ -25,16 +26,23 @@ int modifyAdder(int *x, int y)
 
 int main (void)
 {
-    int a = 5;
-    int b = 13;
-    printf("The total is %i!\n", add(a, b));
-    printf("The modified total is %i!\n", modifyAdder(&a, b));
-    printf("Running normal add again: %i!\n", add(a,b));
-    printf("The modified again is %i!\n", modifyAdder(&a, b));
-    printf("Running normal add a second time: %i!\n", add(a, b));
+    NODE rootNode;
+    rootNode.value = 5;
+
+    printf("%i\n", rootNode.value);
+    // int a = 5;
+    // int b = 13;
+    // printf("The total is %i!\n", add(a, b));
+    // printf("The modified total is %i!\n", modifyAdder(&a, b));
+    // printf("Running normal add again: %i!\n", add(a,b));
+    // printf("The modified again is %i!\n", modifyAdder(&a, b));
+    // printf("Running normal add a second time: %i!\n", add(a, b));
 
     // int* intPointer = &b;
     // printf("b is %i\n", b);
     // *intPointer += 4;
     // printf("now b is %i\n", b);
+
+
+
 }
