@@ -24,11 +24,24 @@ int modifyAdder(int *x, int y)
     return *x + y;
 }
 
+// iterate through the linked list until you get to the end
+
 void addNode(int value, NODE *homeNode)
 {
-    NODE *newNode = malloc(sizeof(NODE));
-    newNode->value = value;
-    homeNode->next = newNode;
+    NODE* trav = homeNode;
+    if (homeNode->next == NULL)
+    {
+        NODE *newNode = malloc(sizeof(NODE));
+        newNode->value = value;
+        //want to nullify whatever data is there.
+        //are we at the end of our list
+        newNode->next = NULL;
+        homeNode->next = newNode;
+    } else
+    {
+        printf("ERROR: next node not null!\n");
+    }
+
 }
 
 // // this was referencing an empty part of the cycle where it was not grabbing anything
@@ -49,6 +62,8 @@ int main (void)
 
     printf("%i\n", rootNode.value);
     printf("%i\n", rootNode.next->value);
+
+    addNode(8, &rootNode);
 
     // NODE secondNode;
     // secondNode.value = 10;
