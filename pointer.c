@@ -1,6 +1,18 @@
 #include <cs50.h>
 #include <stdio.h>
 
+// struct called node containing an int identified as 'value', reference to another node identified as 'next'
+
+// reference through a value
+
+typedef struct
+{
+    int value;
+    NODE *next;
+} __attribute__((__packed__))
+NODE;
+
+
 int add(int x, int y)
 {
     return x + y;
