@@ -16,6 +16,7 @@ typedef struct NODE
     struct NODE *next;
 } NODE;
 
+NODE *rootNode;
 
 int add(int x, int y)
 {
@@ -33,17 +34,23 @@ int modifyAdder(int *x, int y)
 
 void addNode(int value, NODE *homeNode)
 {
+    NODE *newNode = malloc(sizeof(NODE));
+    newNode->value = value;
+
+    newNode->next = NULL;
+    if( rootNode == NULL)
+    {
+        rootNode = newNode;
+        return;
+    }
+
     NODE *trav = homeNode;
 
     while (trav->next != NULL)
     {
         trav = trav-> next;
     }
-    NODE *newNode = malloc(sizeof(NODE));
-    newNode->value = value;
-    //want to nullify whatever data is there.
-    //are we at the end of our list
-    newNode->next = NULL;
+
     trav->next = newNode;
 
     // // 1 = true in the cs50 library it adds
@@ -80,38 +87,32 @@ void addNode(int value, NODE *homeNode)
 
 void displayList(NODE* trav)
 {
-
-    // start with 1st value
-
-
+    // should display
+    // 5, 10, 8, 17
      while(trav->next != NULL)
      {
-         printf("%i\n", trav->value);
+         printf("%i, ", trav->value);
          trav = trav-> next;
      }
      printf("%i\n", trav->value);
-    // return 1;
-
-    // should display
-    // 5, 10, 8, 17
 }
 
 int main(void)
 {
-    NODE rootNode;
-    rootNode.value = 5;
-    rootNode.next = NULL;
-
-    addNode(10, &rootNode);
+    // NODE rootNode;
+    // rootNode.value = 5;
+    // rootNode.next = NULL;
+    addNode(5, rootNode);
+    addNode(10, rootNode);
 
     // printf("%i\n", rootNode.value);
     // printf("%i\n", rootNode.next->value);
 
-    addNode(8, &rootNode);
+    addNode(8, rootNode);
     // printf("added next value\n");
-    addNode(17, &rootNode);
+    addNode(17, rootNode);
     // addNode(20, &rootNode);
-    displayList(&rootNode);
+    displayList(rootNode);
 
     // printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
 }
