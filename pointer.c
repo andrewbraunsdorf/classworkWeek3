@@ -63,7 +63,26 @@ void addNode(int value)
 //     newNode.value = value;
 //     homeNode->next = &newNode;
 // }
+void removeNode(int value)
+{
+    NODE *trav = rootNode;
+    if(rootNode->value == value)
+    {
+        rootNode = rootNode->next;
+        free(trav);
+        return;
+    }
 
+    // navigate list until it finds the list we want to observe
+    while(trav->next->value != value)
+    {
+        trav = trav->next;
+
+    }
+    NODE *temp = trav->next;
+    trav->next = temp->next;
+    free(temp);
+}
 
 void displayList()
 {
@@ -84,6 +103,7 @@ int main(void)
     addNode(10);
     addNode(8);
     addNode(17);
+    // removeNode(8);
     displayList();
 
     // printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
