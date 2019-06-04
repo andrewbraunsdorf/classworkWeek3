@@ -32,20 +32,19 @@ int modifyAdder(int *x, int y)
 // once at end print out last value
 // once at the end add the new node to the list
 
-void addNode(int value, NODE *homeNode)
+void addNode(int value)
 {
     NODE *newNode = malloc(sizeof(NODE));
     newNode->value = value;
-
     newNode->next = NULL;
-    if( rootNode == NULL)
+    if (rootNode == NULL)
     {
         rootNode = newNode;
         return;
     }
 
-    NODE *trav = homeNode;
-
+    // NODE *trav = homeNode;
+    NODE *trav = rootNode;
     while (trav->next != NULL)
     {
         trav = trav-> next;
@@ -53,26 +52,6 @@ void addNode(int value, NODE *homeNode)
 
     trav->next = newNode;
 
-    // // 1 = true in the cs50 library it adds
-    // while(1)
-    // {
-    //     if (trav->next == NULL)
-    //     {
-    //         NODE *newNode = malloc(sizeof(NODE));
-    //         newNode->value = value;
-    //         //want to nullify whatever data is there.
-    //         //are we at the end of our list
-    //         newNode->next = NULL;
-    //         trav->next = newNode;
-    //         break;
-    //     }
-
-    //     else
-    //     {
-    //         trav = trav-> next;
-    //         printf("Moved Deeper\n");
-    //     }
-    // }
 
 
 }
@@ -85,8 +64,10 @@ void addNode(int value, NODE *homeNode)
 //     homeNode->next = &newNode;
 // }
 
-void displayList(NODE* trav)
+
+void displayList()
 {
+    NODE* trav = rootNode;
     // should display
     // 5, 10, 8, 17
      while(trav->next != NULL)
@@ -99,39 +80,11 @@ void displayList(NODE* trav)
 
 int main(void)
 {
-    // NODE rootNode;
-    // rootNode.value = 5;
-    // rootNode.next = NULL;
-    addNode(5, rootNode);
-    addNode(10, rootNode);
-
-    // printf("%i\n", rootNode.value);
-    // printf("%i\n", rootNode.next->value);
-
-    addNode(8, rootNode);
-    // printf("added next value\n");
-    addNode(17, rootNode);
-    // addNode(20, &rootNode);
-    displayList(rootNode);
+    addNode(5);
+    addNode(10);
+    addNode(8);
+    addNode(17);
+    displayList();
 
     // printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
 }
-    // NODE secondNode;
-    // secondNode.value = 10;
-    // rootNode.next = &secondNode;
-
-    // int a = 5;
-    // int b = 13;
-    // printf("The total is %i!\n", add(a, b));
-    // printf("The modified total is %i!\n", modifyAdder(&a, b));
-    // printf("Running normal add again: %i!\n", add(a,b));
-    // printf("The modified again is %i!\n", modifyAdder(&a, b));
-    // printf("Running normal add a second time: %i!\n", add(a, b));
-
-    // int* intPointer = &b;
-    // printf("b is %i\n", b);
-    // *intPointer += 4;
-    // printf("now b is %i\n", b);
-
-
-
