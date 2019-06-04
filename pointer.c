@@ -78,11 +78,23 @@ void addNode(int value, NODE *homeNode)
 //     homeNode->next = &newNode;
 // }
 
-// void displayList(NODE* trav)
-// {
-//     // should display
-//     // 5, 10, 8, 17
-// }
+void displayList(NODE* trav)
+{
+
+    // start with 1st value
+
+
+     while(trav->next != NULL)
+     {
+         printf("%i\n", trav->value);
+         trav = trav-> next;
+     }
+     printf("%i\n", trav->value);
+    // return 1;
+
+    // should display
+    // 5, 10, 8, 17
+}
 
 int main(void)
 {
@@ -92,16 +104,16 @@ int main(void)
 
     addNode(10, &rootNode);
 
-    printf("%i\n", rootNode.value);
-    printf("%i\n", rootNode.next->value);
+    // printf("%i\n", rootNode.value);
+    // printf("%i\n", rootNode.next->value);
 
     addNode(8, &rootNode);
     // printf("added next value\n");
     addNode(17, &rootNode);
     // addNode(20, &rootNode);
-    // displayList(&rootNode);
+    displayList(&rootNode);
 
-    printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
+    // printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
 }
     // NODE secondNode;
     // secondNode.value = 10;
