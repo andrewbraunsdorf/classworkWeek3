@@ -23,7 +23,7 @@ int add(int x, int y)
 }
 int modifyAdder(int *x, int y)
 {
-    *x+= 7;
+    *x += 7;
     return *x + y;
 }
 
@@ -34,26 +34,38 @@ int modifyAdder(int *x, int y)
 void addNode(int value, NODE *homeNode)
 {
     NODE *trav = homeNode;
-    // 1 = true in the cs50 library it adds
-    while(1)
-    {
-        if (trav->next == NULL)
-        {
-            NODE *newNode = malloc(sizeof(NODE));
-            newNode->value = value;
-            //want to nullify whatever data is there.
-            //are we at the end of our list
-            newNode->next = NULL;
-            trav->next = newNode;
-            break;
-        }
 
-        else
-        {
-            trav = trav-> next;
-            printf("Moved Deeper\n");
-        }
+    while (trav->next != NULL)
+    {
+        trav = trav-> next;
     }
+    NODE *newNode = malloc(sizeof(NODE));
+    newNode->value = value;
+    //want to nullify whatever data is there.
+    //are we at the end of our list
+    newNode->next = NULL;
+    trav->next = newNode;
+
+    // // 1 = true in the cs50 library it adds
+    // while(1)
+    // {
+    //     if (trav->next == NULL)
+    //     {
+    //         NODE *newNode = malloc(sizeof(NODE));
+    //         newNode->value = value;
+    //         //want to nullify whatever data is there.
+    //         //are we at the end of our list
+    //         newNode->next = NULL;
+    //         trav->next = newNode;
+    //         break;
+    //     }
+
+    //     else
+    //     {
+    //         trav = trav-> next;
+    //         printf("Moved Deeper\n");
+    //     }
+    // }
 
 
 }
@@ -66,7 +78,13 @@ void addNode(int value, NODE *homeNode)
 //     homeNode->next = &newNode;
 // }
 
-int main (void)
+// void displayList(NODE* trav)
+// {
+//     // should display
+//     // 5, 10, 8, 17
+// }
+
+int main(void)
 {
     NODE rootNode;
     rootNode.value = 5;
@@ -81,9 +99,10 @@ int main (void)
     // printf("added next value\n");
     addNode(17, &rootNode);
     // addNode(20, &rootNode);
+    // displayList(&rootNode);
 
     printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
-
+}
     // NODE secondNode;
     // secondNode.value = 10;
     // rootNode.next = &secondNode;
@@ -103,4 +122,3 @@ int main (void)
 
 
 
-}
