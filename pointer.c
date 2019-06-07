@@ -139,14 +139,34 @@ void freeList()
 // loop through find 2nd to last remove item and set to null until head remains
 // recursively iterate through the list to remove all items
 
-//removes rootNode when it is only the root node
-    while (rootNode->next != NULL)
+    while(rootNode->next !=NULL)
+    {
+        NODE *trav = rootNode;
+        while(trav->next->next != NULL)
+        {
+            trav = trav->next;
+        }
+        printf("%i\n", trav-> value);
+        // deletes last item in list
+        free(trav->next);
+        // now you are making the last ("second to last item") equal to NULL
+        trav->next = NULL;
+        // return;
+    }
+    free(rootNode);
+
+}
+
+void freelistFunction()
+{
+        while (rootNode->next != NULL)
     {
         NODE *trav = rootNode;
         while (trav->next != NULL)
         {
             trav = trav-> next;
         }
+        // remove node is setting next to last digit to NULL
         removeNode(trav->value);
     }
 
@@ -156,8 +176,8 @@ void freeList()
 // {
 //     free(rootNode);
 // }
-
 }
+
 
 int main(void)
 {
