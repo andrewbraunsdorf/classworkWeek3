@@ -18,15 +18,15 @@ typedef struct NODE
 
 NODE *rootNode;
 
-int add(int x, int y)
-{
-    return x + y;
-}
-int modifyAdder(int *x, int y)
-{
-    *x += 7;
-    return *x + y;
-}
+// int add(int x, int y)
+// {
+//     return x + y;
+// }
+// int modifyAdder(int *x, int y)
+// {
+//     *x += 7;
+//     return *x + y;
+// }
 
 // iterate through the linked list until you get to the end
 // once at end print out last value
@@ -77,7 +77,6 @@ void removeNode(int value)
     while(trav->next->value != value)
     {
         trav = trav->next;
-
     }
     NODE *temp = trav->next;
     trav->next = temp->next;
@@ -97,6 +96,69 @@ void displayList()
      printf("%i\n", trav->value);
 }
 
+// void freeList2()
+// {
+//     // create another variable?
+//     // get to the last item if trav->next != NULL?
+//     // delete last item
+//     // maybe while ( lastNode = NULL)
+//     // delete last node
+//     if(rootNode->next == NULL)
+//     {
+//         free(rootNode);
+//         return;
+//     }
+
+//     NODE *trav = rootNode;
+
+//     // while(trav->next->value )
+//     // {
+//     //     trav = trav->next;
+//     // }
+//     // while(rootNode != NULL)
+//     // {
+//         while(trav->next != NULL)
+//         {
+//             trav = trav->next;
+//             // delete last item in list... aka 17
+//             // NODE *temp = trav;
+//             // temp->next = trav->next;
+//             free(trav->next);
+//         }
+//     // }
+
+//     // free(temp);
+//     // loop through find last item send value to remove code
+//     // loop through find 2nd to last remove item and set to null until head remains
+//     // recursively iterate through the list to remove all items
+// }
+
+void freeList()
+{
+// loop through find last item send value to remove code
+// loop through find 2nd to last remove item and set to null until head remains
+// recursively iterate through the list to remove all items
+
+//removes rootNode when it is only the root node
+    while (rootNode->next != NULL)
+    {
+        NODE *trav = rootNode;
+        while (trav->next != NULL)
+        {
+            trav = trav-> next;
+        }
+        removeNode(trav->value);
+    }
+
+    free(rootNode);
+// only works for the rootNode
+// if (rootNode->next == NULL)
+// {
+//     free(rootNode);
+// }
+
+}
+
 int main(void)
 {
     addNode(5);
@@ -104,6 +166,7 @@ int main(void)
     addNode(8);
     addNode(17);
     // removeNode(8);
+    freeList();
     displayList();
 
     // printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
