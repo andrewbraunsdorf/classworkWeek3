@@ -134,6 +134,14 @@ void displayList()
 // }
 
 
+// void freelist()
+// {
+//     while (rootNode)
+//     {
+//         removeNode(rootNode->value);
+//     }
+// }
+
 // recursively iterate through the list to remove all items
 void freeList(NODE *curNode)
 {
@@ -205,6 +213,7 @@ int main(void)
     addNode(8);
     addNode(17);
     // removeNode(8);
+    // freelist();
     freeList(rootNode);
     displayList();
 
