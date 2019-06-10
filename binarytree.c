@@ -3,12 +3,14 @@
 
 // minichallenge create the NODE for a binary tree.
 
+#define true 1
+#define false 0
 typedef struct NODE
 {
     // identifer
     int value;
-    struct NODE *left;
-    struct NODE *right;
+    struct NODE *low;
+    struct NODE *high;
 } NODE;
 
 NODE *rootNode;
@@ -17,21 +19,34 @@ void addNode(int value)
 {
     NODE *newNode = malloc(sizeof(NODE));
     newNode->value = value;
-    newNode->left = NULL;
-    newNode->right = NULL;
+    newNode->low = NULL;
+    newNode->high = NULL;
 
     if(rootNode == NULL)
     {
         rootNode = newNode;
         return;
     }
-    if (rootNode->value < value)
+
+    NODE *trav = rootNode;
+    while(1)
     {
-        rootNode->left = newNode;
-    }
-    else
-    {
-        rootNode->right = newNode;
+        if (newNode->value < trav->value)
+        {
+            if(trav->low == NULL)
+            {
+                trav->low = newNode;
+                return;
+            }
+            trav = trav->low;
+            // continue restarts the loop
+            continue;
+        }
+        else
+        {
+            rootNode->high = newNode;
+            return;
+        }
     }
 }
 
@@ -42,5 +57,14 @@ int main(void)
     addNode(10);
     addNode(8);
     addNode(15);
+    addNode(17);
+    addNode(20);
+    addNode(18);
+    addNode(5);
+    addNode(6);
+    addNode(9);
+    addNode(4);
+    addNode(13);
+    addNode(7);
     // displayList();
 }
