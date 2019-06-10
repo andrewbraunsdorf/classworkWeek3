@@ -82,11 +82,29 @@ void displayList()
 }
 
 
-    // loop through find 2nd to last remove item and set to null until head remains
+ // recursively iterate through the list to remove all items
+void freeList(NODE *curNode)
+{
+    printf("attempt to free %i\n", curNode->value);
     // recursively iterate through the list to remove all items
+    if (curNode->next == NULL)
+    {
+        printf("No Children freed %i\n", curNode->value);
+        free(curNode);
+        return;
+    }
+    // I have a child ask it to free itself
+        printf("Child found moving to child\n");
+    freeList(curNode->next);
+
+    printf("Free Child %i\n", curNode->value);
+    //my child freed itsefl
+    free(curNode);
+    return;
+}
 
 // loop through find 2nd to last remove item and set to null until head remains
-void freeList()
+void freeListSelf()
 {
     while(rootNode->next != NULL)
     {
@@ -103,7 +121,6 @@ void freeList()
 
     free(rootNode);
 }
-
 
 // loop through find last item send value to remove code
 void freelistFunction()
@@ -133,7 +150,7 @@ int main(void)
     // removeNode(8);
     // freelist();
     displayList();
-    freeList();
+    freeList(rootNode);
     displayList();
 
     // printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
