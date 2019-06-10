@@ -81,7 +81,13 @@ void displayList()
      printf("%i\n", trav->value);
 }
 
-
+void freeListEfficientRemoveNode()
+{
+    while(rootNode != NULL)
+    {
+        removeNode(rootNode->value);
+    }
+}
  // recursively iterate through the list to remove all items
 void freeList(NODE *curNode)
 {
