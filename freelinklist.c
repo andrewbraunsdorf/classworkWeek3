@@ -85,8 +85,28 @@ void displayList()
     // loop through find 2nd to last remove item and set to null until head remains
     // recursively iterate through the list to remove all items
 
-// loop through find last item send value to remove code
+// loop through find 2nd to last remove item and set to null until head remains
 void freeList()
+{
+    while(rootNode->next != NULL)
+    {
+        NODE *trav = rootNode;
+        while(trav->next->next != NULL)
+        {
+           trav = trav->next;
+        }
+        printf("%i\n", trav->value);
+        free(trav->next);
+        trav->next = NULL;
+        // return;
+    }
+
+    free(rootNode);
+}
+
+
+// loop through find last item send value to remove code
+void freelistFunction()
 {
 
     while (rootNode->next != NULL)
