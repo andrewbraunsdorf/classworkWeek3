@@ -42,5 +42,5 @@ int main(void)
     addNode(10);
     addNode(8);
     addNode(15);
-    displayList();
+    // displayList();
 }
