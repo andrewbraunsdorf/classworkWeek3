@@ -81,7 +81,27 @@ void displayList()
      printf("%i\n", trav->value);
 }
 
+
+    // loop through find 2nd to last remove item and set to null until head remains
+    // recursively iterate through the list to remove all items
+
+// loop through find last item send value to remove code
 void freeList()
+{
+
+    while (rootNode->next != NULL)
+    {
+        // makes it start at beginning of the list
+        NODE *trav = rootNode;
+        while (trav->next != NULL)
+        {
+            trav = trav-> next;
+        }
+        // remove node wants an int not a node
+        removeNode(trav->value);
+    }
+    free(rootNode);
+}
 
 
 int main(void)
@@ -92,7 +112,8 @@ int main(void)
     addNode(17);
     // removeNode(8);
     // freelist();
-    freeList(rootNode);
+    displayList();
+    freeList();
     displayList();
 
     // printf("%i\n%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
