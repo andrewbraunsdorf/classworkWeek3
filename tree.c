@@ -26,7 +26,7 @@ void addNode(int value)
         return;
     }
 
-    if (rootNode->value < value)
+    if (rootNode->value > value)
     {
         rootNode->left = newNode;
     }
@@ -44,9 +44,9 @@ void addSecondNode(int value)
     newNode->left = NULL;
     newNode->right = NULL;
 
-    if (rootNode->value < value)
+    if (rootNode->value > value)
     {
-        if (rootNode->left->value < value)
+        if (rootNode->left->value > value)
         {
             rootNode->left->left = newNode;
         }
@@ -57,7 +57,7 @@ void addSecondNode(int value)
     }
     else
     {
-        if (rootNode->right->value < value)
+        if (rootNode->right->value > value)
         {
             rootNode->right->left = newNode;
         }
@@ -94,5 +94,6 @@ int main(void)
     addSecondNode(20);
     addSecondNode(9);
     addSecondNode(7);
+    addSecondNode(14);
     // displayList();
 }
