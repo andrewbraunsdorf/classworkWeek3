@@ -29,25 +29,61 @@ void addNode(int value)
     }
 
     NODE *trav = rootNode;
+    // printf("trying to add node %i\n", newNode->value);
     while(1)
     {
         if (newNode->value < trav->value)
         {
             if(trav->low == NULL)
             {
+                // printf("found empty spot\n");
                 trav->low = newNode;
                 return;
             }
+            // printf("found a low node valued: %i maving to it\n", trav->low->value);
             trav = trav->low;
             // continue restarts the loop
             continue;
         }
         else
         {
-            rootNode->high = newNode;
-            return;
+            if (trav->high == NULL)
+            {
+                trav->high = newNode;
+                return;
+            }
+            trav = trav->high;
+            continue;
         }
     }
+}
+void displayTreeOnEnter(NODE *curNode)
+{
+    printf("%i, ", curNode->value);
+
+    // these are identicals
+    // if(curNode->low != NULL)
+    if(curNode->low)
+    {
+        displayTreeOnEnter(curNode->low);
+    }
+
+    if(curNode->high)
+    {
+        displayTreeOnEnter(curNode->high);
+    }
+}
+void displayTreeOnDeparture(NODE *curNode)
+// 4 7 6 5 9 8 13 18 20 17 15 10
+{
+
+}
+
+void doesContain(int value)
+{
+    //search the tree
+    // return 1 if value is not in the tree
+    // return 0 if value does exist in the tree
 }
 
 
@@ -67,4 +103,8 @@ int main(void)
     addNode(13);
     addNode(7);
     // displayList();
+
+    displayTreeOnEnter(rootNode);
+    displayTreeOnDeparture(rootNode);
+    printf("\n");
 }
