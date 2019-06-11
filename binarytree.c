@@ -93,31 +93,59 @@ void displayTreeOnDeparture(NODE *curNode)
 int doesContain(int value)
 {
     //search the tree
-    // return 1 if value is not in the tree
-    // return 0 if value does exist in the tree
-    NODE *curNode = rootNode;
+    // return 0 if value is not in the tree
+    // return 1 if value does exist in the tree
+    NODE *trav = rootNode;
+
+    // while(1)
+    // {
+    //     if(trav->low->value == value || trav->high->value == value)
+    // {
+    //     printf("Match\n");
+    //     return 1;
+    // }
+    // printf("No Match\n");
+    // return 0;
+    // }
 
     while(1)
     {
-        if(curNode->low->value == value || curNode->high->value == value)
-    {
-        printf("Match\n");
+        if (rootNode->value == value)
+        {
+            printf("Match\n");
+            return 1;
+        }
+        if (value < trav->value)
+        {
+            if(trav->low->value == value)
+            {
+                // printf("found empty spot\n");
+                printf("Match\n");
+                return 1;
+            }
+            else
+            {
+            // printf("found a low node valued: %i maving to it\n", trav->low->value);
+            trav = trav->low;
+            // continue restarts the loop
+            continue;
+            }
+        }
+        else
+        {
+            if (trav->high->value == value)
+            {
+                printf("Match\n");
+                return 1;
+            }
+            trav = trav->high;
+            continue;
+        }
+        printf("No Match\n");
         return 0;
     }
-    printf("No Match\n");
-    return 1;
-    }
 
-    //while 1
-    // if cur node -> low->value
 
-    // if(curNode->low->value == value || curNode->high->value == value)
-    // {
-    //     printf("Match\n");
-    //     return 0;
-    // }
-    // printf("No Match\n");
-    // return 1;
 }
 
 
@@ -142,8 +170,13 @@ int main(void)
     displayTreeOnDeparture(rootNode);
     printf("\n");
     doesContain(10);
+    doesContain(8);
+    doesContain(7);
+    doesContain(15);
+    doesContain(20);
     doesContain(11);
     doesContain(4);
     doesContain(8);
-    doesContain(15);
+
+
 }
