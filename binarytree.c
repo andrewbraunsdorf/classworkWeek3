@@ -90,11 +90,20 @@ void displayTreeOnDeparture(NODE *curNode)
     printf("%i, ", curNode->value);
 }
 
-void doesContain(int value)
+int doesContain(int value)
 {
     //search the tree
     // return 1 if value is not in the tree
     // return 0 if value does exist in the tree
+    NODE *curNode = rootNode;
+
+    if(curNode->low->value == value || curNode->high->value == value)
+    {
+        printf("Match\n");
+        return 0;
+    }
+    printf("No Match\n");
+    return 1;
 }
 
 
@@ -118,4 +127,9 @@ int main(void)
     // displayTreeOnEnter(rootNode);
     displayTreeOnDeparture(rootNode);
     printf("\n");
+    doesContain(10);
+    doesContain(11);
+    doesContain(4);
+    doesContain(8);
+    doesContain(15);
 }
