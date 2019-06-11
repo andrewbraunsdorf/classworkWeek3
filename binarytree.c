@@ -97,13 +97,27 @@ int doesContain(int value)
     // return 0 if value does exist in the tree
     NODE *curNode = rootNode;
 
-    if(curNode->low->value == value || curNode->high->value == value)
+    while(1)
+    {
+        if(curNode->low->value == value || curNode->high->value == value)
     {
         printf("Match\n");
         return 0;
     }
     printf("No Match\n");
     return 1;
+    }
+
+    //while 1
+    // if cur node -> low->value
+
+    // if(curNode->low->value == value || curNode->high->value == value)
+    // {
+    //     printf("Match\n");
+    //     return 0;
+    // }
+    // printf("No Match\n");
+    // return 1;
 }
 
 
