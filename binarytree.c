@@ -125,7 +125,7 @@ int doesContain(int value)
             }
             // printf("found a low node valued: %i maving to it\n", trav->low->value);
             trav = trav->low;
-            if (trav->low == NULL)
+            if (trav->low == NULL && trav->high == NULL)
             {
                 printf("No Match\n");
                 return 0;
@@ -143,13 +143,11 @@ int doesContain(int value)
                 return 1;
             }
             trav = trav->high;
-            if (trav->high == NULL)
+            if (trav->high == NULL && trav->low == NULL)
             {
                 printf("No Match\n");
                 return 0;
             }
-
-
             continue;
         }
         else
@@ -245,9 +243,9 @@ int main(void)
     doesContain(13);
     doesContain(7);
     doesContain(11);
-    doesContain(25);
+    doesContain(19);
     doesContain(2);
-    doesContain(99);
+    // doesContain(99);
     doesContain(-1);
 
 }
