@@ -123,15 +123,19 @@ int doesContain(int value)
                 printf("Match\n");
                 return 1;
             }
-            else
-            {
             // printf("found a low node valued: %i maving to it\n", trav->low->value);
             trav = trav->low;
+            if (trav->low == NULL)
+            {
+                printf("No Match\n");
+                return 0;
+            }
+
             // continue restarts the loop
             continue;
-            }
+
         }
-        else
+        if (value > trav->value)
         {
             if (trav->high->value == value)
             {
@@ -139,15 +143,61 @@ int doesContain(int value)
                 return 1;
             }
             trav = trav->high;
+            if (trav->high == NULL)
+            {
+                printf("No Match\n");
+                return 0;
+            }
+
+
             continue;
         }
-        printf("No Match\n");
-        return 0;
+        else
+        {
+            printf("No Match\n");
+            return 0;
+        }
     }
-
-
 }
 
+// int doesContain(int value)
+// {
+//     //search the tree
+//     // return 0 if value is not in the tree
+//     // return 1 if value does exist in the tree
+//     NODE *trav = rootNode;
+//     while(1)
+//     {
+//         if (rootNode->value == value)
+//         {
+//             printf("Match\n");
+//             return 1;
+//         }
+//         if(trav->low->value == value)
+//         {
+//             doesContain(trav->low);
+//         }
+//         // if(trav->low->value == value)
+//         // {
+//         //     printf("Match\n");
+//         //     return 1;
+//         // }
+//         // else
+//         // {
+//         //     trav = trav->low;
+//         // }
+
+//         // if(trav->high->value == value)
+//         // {
+//         //     printf("Match\n");
+//         //     return 1;
+//         // }
+//         // else
+//         // {
+//         //     trav = trav->low;
+//         // }
+//     }
+// }
 
 int main(void)
 {
@@ -164,19 +214,40 @@ int main(void)
     addNode(4);
     addNode(13);
     addNode(7);
+    addNode(14);
+    addNode(12);
     // displayList();
 
     // displayTreeOnEnter(rootNode);
     displayTreeOnDeparture(rootNode);
     printf("\n");
+    // doesContain(10);
+    // doesContain(8);
+    // doesContain(7);
+    // doesContain(15);
+    // doesContain(20);
+    // doesContain(9);
+    // doesContain(13);
+    // doesContain(11);
+    // doesContain(4);
+    // doesContain(8);
     doesContain(10);
     doesContain(8);
-    doesContain(7);
     doesContain(15);
+    doesContain(17);
     doesContain(20);
-    doesContain(11);
+    doesContain(18);
+    doesContain(14);
+    doesContain(5);
+    doesContain(6);
+    doesContain(9);
     doesContain(4);
-    doesContain(8);
-
+    doesContain(13);
+    doesContain(7);
+    doesContain(11);
+    doesContain(25);
+    doesContain(2);
+    doesContain(99);
+    doesContain(-1);
 
 }
