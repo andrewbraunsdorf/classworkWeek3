@@ -169,7 +169,7 @@ int main(void)
     assert(doesContain(10) && "tree does contain 10");
     assert(doesContain(8) && "tree does contain 8");
     assert(doesContain(4) && "tree does contain 4");
-    assert(doesContain(11) && "tree does contain 11");
+    assert(!doesContain(1) && "tree does contain 1");
     // doesContain(8);
     // doesContain(15);
     // doesContain(17);
