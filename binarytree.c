@@ -98,22 +98,27 @@ int doesContain(int value, NODE *curNode)
         printf("Match\n");
         return 1;
     }
-    if(value == curNode->value ||value ==curNode->value)
+    if(value == curNode->value)
     {
         printf("Match\n");
         return 1;
     }
     if(value < curNode->value)
     {
+        printf("%i\n",curNode->value);
         doesContain(value, curNode->low);
     }
 
     if(value > curNode->value)
     {
+        printf("%i\n",curNode->value);
         doesContain(value, curNode->high);
     }
-
-    return 0;
+    if(value != curNode->value ||value !=curNode->value)
+    {
+        printf("No Match \n");
+        return 0;
+    }
     // printf("No Match \n");
 }
 // int doesContain(int value)
