@@ -99,6 +99,20 @@ int doesContain(int value)
         printf("Match\n");
         return 1;
     }
+    NODE *trav = rootNode;
+    if (value < trav->value)
+    {
+        if (trav->low == NULL)
+        {
+            return 0;
+        }
+        if (trav->low->value == value)
+        {
+            printf("Match\n");
+            return 1;
+        }
+        return 0;
+    }
     else
     {
         return 0;
