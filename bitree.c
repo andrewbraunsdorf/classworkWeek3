@@ -94,28 +94,28 @@ void displayTreeOnDeparture(NODE *curNode)
 
 int doesContain(int value)
 {
-    if (rootNode->value == value)
-    {
-        printf("Match\n");
-        return 1;
-    }
+    // if (rootNode->value == value)
+    // {
+    //     printf("Match\n");
+    //     return 1;
+    // }
     NODE *trav = rootNode;
-    if (value < trav->value)
+    while(1)
     {
-        if (trav->low == NULL)
-        {
-            return 0;
-        }
-        if (trav->low->value == value)
+        if(trav->value == value)
         {
             printf("Match\n");
             return 1;
         }
-        return 0;
-    }
-    else
-    {
-        return 0;
+        if (value < trav->value)
+        {
+            if (trav->low == NULL)
+            {
+                return 0;
+            }
+            trav = trav->low;
+            continue;
+        }
     }
 }
 
@@ -167,7 +167,9 @@ int main(void)
 
 
     assert(doesContain(10) && "tree does contain 10");
-    assert(doesContain(8) && "tree does contain 10");
+    assert(doesContain(8) && "tree does contain 8");
+    assert(doesContain(4) && "tree does contain 4");
+    assert(doesContain(11) && "tree does contain 11");
     // doesContain(8);
     // doesContain(15);
     // doesContain(17);
