@@ -116,13 +116,17 @@ int doesContain(int value)
             trav = trav->low;
             continue;
         }
+        if (!trav->high)
+        {
+            return 0;
+        }
+        trav = trav->high;
+        continue;
     }
 }
 
-
-int main(void)
+void tests()
 {
-    printf("hello\n");
     addNode(10);
     addNode(8);
     addNode(15);
@@ -142,50 +146,22 @@ int main(void)
     // displayTreeOnEnter(rootNode);s
     displayTreeOnDeparture(rootNode);
     printf("\n");
-    // doesContain(10, rootNode);
-    // doesContain(8, rootNode);
-    // doesContain(7, rootNode);
-    // doesContain(15, rootNode);
-    // doesContain(20, rootNode);
-    // doesContain(9, rootNode);
-    // doesContain(13, rootNode);
-
-    // doesContain(4, rootNode);
-    // // doesContain(8, rootNode);
-    // doesContain(5, rootNode);
-    // doesContain(6, rootNode);
-    // // doesContain(9, rootNode);
-    // doesContain(4, rootNode);
-    // doesContain(11, rootNode);
-    // // doesContain(13);
-    // // doesContain(7);
-    // // doesContain(11);
-    // doesContain(19, rootNode);
-    // doesContain(2, rootNode);
-    // doesContain(99, rootNode);
-    // doesContain(-1, rootNode);
 
 
     assert(doesContain(10) && "tree does contain 10");
     assert(doesContain(8) && "tree does contain 8");
     assert(doesContain(4) && "tree does contain 4");
     assert(!doesContain(1) && "tree does contain 1");
-    // doesContain(8);
-    // doesContain(15);
-    // doesContain(17);
-    // doesContain(20);
-    // doesContain(18);
-    // doesContain(14);
-    // doesContain(5);
-    // doesContain(6);
-    // doesContain(9);
-    // doesContain(4);
-    // doesContain(13);
-    // doesContain(7);
-    // doesContain(11);
-    // doesContain(19);
-    // doesContain(2);
-    // doesContain(99);
-    // doesContain(-1);
+    assert(doesContain(15) && "tree does contain 15");
+    assert(!doesContain(100) && "tree does contain 1");
+    assert(doesContain(13) && "tree does contain 15");
+    assert(doesContain(18) && "tree does contain 15");
+    assert(!doesContain(16) && "tree does contain 15");
+}
+int main(void)
+{
+    printf("hello\n");
+
+    tests();
 
 }
